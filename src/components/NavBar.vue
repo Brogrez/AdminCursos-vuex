@@ -1,21 +1,20 @@
 <template>
   <div>
-    <b-navbar type="warning" class="p-2 colorNav">
-      <b-navbar-nav class="row justify-content-end w-100 mx-auto">
-        <b-nav-item href="#" class="item px-3">
-          <router-link class="linkColor" to="/">
-            <b-icon font-scale="1.5" icon="house-door-fill"></b-icon>
-          </router-link>
-        </b-nav-item>
-        <b-nav-item href="#" class="item px-3">
-          <router-link class="linkColor" to="/Administracion">
-            <b-icon font-scale="1.5" icon="Gear-fill"></b-icon>
-          </router-link>
-        </b-nav-item>
+    <b-navbar toggleable="lg" type="dark" class="colorNav">
+      <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
-
-      </b-navbar-nav>
+      <router-link to="/">
+        <button class="btn">
+          <b-icon class="mx-1 mt-1 icono" font-scale="1.5" icon="house-fill"></b-icon>
+        </button>
+      </router-link>
+      <router-link to="/administracion">
+        <button class="btn">
+          <b-icon class="mx-1 mt-1 icono" font-scale="1.5" icon="gear-wide"></b-icon>
+        </button>
+      </router-link>
     </b-navbar>
+
   </div>
 </template>
 
@@ -25,27 +24,17 @@ export default {
 };
 </script>
 
-<style scope>
-.item:hover {
-  background-color: #8443ac;
-  border-radius: 10px;
-  margin-left: 2rem;
-}
-.item {
-  border-radius: 10px;
-  margin-left: 2rem;
-}
-.icono {
-  text-decoration: none;
-}
+<style scoped>
 .colorNav {
   background-color: #6a1b9a;
 }
-.linkColor {
-  color: white;
+.btn{
+  margin:0 1rem ;
 }
-
-.linkColor:hover {
-  color: white;
+.btn:hover{
+  background: #8443ac;
+}
+.icono{
+  color:white;
 }
 </style>

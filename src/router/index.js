@@ -10,6 +10,11 @@ const routes = [
     component: () => import("../views/VistaCursos.vue"),
   },
   {
+    path: "/administracion",
+    name: "Admin",
+    component: () => import("../views/AdminCursos.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () => import("../views/NotFound.vue"),
