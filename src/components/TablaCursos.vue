@@ -18,7 +18,7 @@
             <td class="px-4">{{curso.duracion}}</td>
             <td class="px-4"> <span class="span">${{curso.costo}}</span></td>
             <td class="px-4"><b-badge class="p-3" pill :variant="curso.completado ? 'primary' : 'secondary'">{{curso.completado ? 'Si' : 'No'}} </b-badge></td>
-            <td class="px-4"><span class="span">{{curso.fecha_registro}}</span></td>
+            <td class="py-4"><span class="span">{{curso.fecha_registro}}</span></td>
             <td class="px-4">
                 <button class="btn"><b-icon icon="pencil-fill" variant='warning'></b-icon></button>
                 <button class="btn"><b-icon icon="trash-fill" variant='danger'></b-icon></button>
@@ -44,6 +44,7 @@ name:'Tabla-Cursos',
 <style scoped>
 .tabla{
     margin:5rem auto;
+    margin-top: 1rem ;
 }
 .bordes{
     border:1px solid black;

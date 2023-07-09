@@ -84,7 +84,15 @@ export default new Vuex.Store({
     ],
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_CURSO(state,curso){
+      state.cursos.push(curso)
+    }
+  },
+  actions: {
+    add_curso({commit}, curso){
+      commit('ADD_CURSO', curso)
+    }
+  },
   modules: {},
 });
