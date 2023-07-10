@@ -5,6 +5,7 @@
         <b-card
           no-body
           :img-src="curso.img"
+          style="max-width: 20rem ;"
           img-alt="Image"
           img-top
         >
@@ -13,11 +14,11 @@
           </template>
           <b-card-title>Informacion</b-card-title>
           <b-list-group flush class="text">
-            <b-list-group-item class="p-0 m-0"> <span>Costo:</span> {{ curso.costo }}</b-list-group-item>
-            <b-list-group-item class="p-0 m-0"> <span>Duracion:</span> {{ curso.duracion }}</b-list-group-item>
-            <b-list-group-item class="p-0 m-0"> <span>cupos</span>: {{ curso.cupos }}</b-list-group-item>
-            <b-list-group-item class="p-0 m-0"> <span>Fecha de Registro:</span> {{ curso.fecha_registro }}</b-list-group-item>
-            <b-list-group-item class="p-0 m-0"> <span>Descripcion:</span> {{ curso.descripcion }}</b-list-group-item>
+            <b-list-group-item class="p-1 m-0"> <span>Costo:</span> {{ curso.costo }}</b-list-group-item>
+            <b-list-group-item class="p-1 m-0"> <span>Duracion:</span> {{ curso.duracion }}</b-list-group-item>
+            <b-list-group-item class="p-1 m-0"> <span>cupos</span>: {{ curso.cupos }}</b-list-group-item>
+            <b-list-group-item class="p-1 m-0"> <span>Fecha de Registro:</span> {{ curso.fecha_registro }}</b-list-group-item>
+            <b-list-group-item class="p-1 m-0"> <span>Descripcion:</span> {{ curso.descripcion }}</b-list-group-item>
           </b-list-group>
         </b-card>
       </div>
@@ -47,5 +48,9 @@ export default {
 }
 span{
     font-weight: bold;
+}
+
+img{
+  height: 15rem;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-button v-b-modal.modal1>Agregar Curso</b-button>
+    <b-button v-b-modal.modal1 variant="primary ">Agregar Curso</b-button>
 
-    <b-modal ref="my-modal" id="modal1" hide-footer>
+    <b-modal ref="my-modal" id="modal1" hide-footer hide-header-close>
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group id="input-group-1" label="Nombre" label-for="input-1">
           <b-form-input
@@ -93,8 +93,9 @@
           <pre class="mt-3 mb-0">{{ text }}</pre>
         </b-form-group>
 
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button class="mx-1" type="submit" variant="success">Agregar</b-button>
+        <b-button class="mx-1" type="reset" variant="warning">Limpiar</b-button>
+        <b-button class="mx-1" @click="onClose" type="close" variant="danger">Cerrar</b-button>
       </b-form>
     </b-modal>
   </div>
@@ -128,6 +129,9 @@ export default {
       this.curso.id = Date.now();
       this.add_curso(this.curso);
       console.log(this.curso);
+      this.$refs["my-modal"].hide();
+    },
+    onClose(){
       this.$refs["my-modal"].hide();
     },
     onReset(event) {

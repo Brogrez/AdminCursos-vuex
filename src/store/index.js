@@ -82,8 +82,34 @@ export default new Vuex.Store({
           "Con SASS aprenderás a escribir mejor código de CSS con todas las funciones necesarias.",
       },
     ],
+    alumnosPermitidos: {
+      alumnos: 190,
+    }
   },
-  getters: {},
+  getters: {
+    conteoCursos(state){
+      return state.cursos.length
+    },
+    cursosActivos(state){
+      let activos = state.cursos.filter(curso => curso.completado == true)
+      return activos.length
+    },
+    cursosTerminados(state){
+      let terminados = state.cursos.filter(curso => curso.completado == false)
+      return terminados.length
+    },
+    alumnosInscritos(state){
+      let inscritos = 0;
+      state.cursos.map(curso => inscritos += curso.inscritos)
+      return inscritos 
+    },
+    AlumnosPermitidos(state){
+      return state.alumnosPermitidos.alumnos
+    },
+    alumnosRestantes(state,getters){
+      return state.alumnosPermitidos.alumnos - getters.alumnosInscritos
+    }
+  },
   mutations: {
     ADD_CURSO(state,curso){
       state.cursos.push(curso)
