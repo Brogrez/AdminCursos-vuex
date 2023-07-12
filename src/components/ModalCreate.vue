@@ -1,8 +1,7 @@
 <template>
   <div>
-    <b-button v-b-modal.modal1 variant="primary ">Agregar Curso</b-button>
-
-    <b-modal ref="my-modal" id="modal1" hide-footer hide-header-close>
+    <b-modal ref="my-modal" id="modalCreate" hide-footer hide-header-close>
+      <h1>{{accion}}</h1>
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group id="input-group-1" label="Nombre" label-for="input-1">
           <b-form-input
@@ -12,6 +11,7 @@
             placeholder="introduzca el nombre"
             required
           ></b-form-input>
+  
         </b-form-group>
 
         <b-form-group
@@ -30,6 +30,8 @@
 
         <b-form-group id="input-group-1" label="Cupos" label-for="input-3">
           <b-form-input
+            min="1"
+            :max="alumnosRestantes"
             id="input-3"
             v-model="curso.cupos"
             type="number"
@@ -40,6 +42,7 @@
 
         <b-form-group id="input-group-1" label="Inscritos" label-for="input-4">
           <b-form-input
+            :max="alumnosRestantes"
             id="input-4"
             v-model="curso.inscritos"
             type="number"
@@ -90,10 +93,9 @@
             max-rows="6"
           ></b-form-textarea>
 
-          <pre class="mt-3 mb-0">{{ text }}</pre>
         </b-form-group>
 
-        <b-button class="mx-1" type="submit" variant="success">Agregar</b-button>
+        <b-button class="mx-1" type="submit" variant="success">{{accion}}</b-button>
         <b-button class="mx-1" type="reset" variant="warning">Limpiar</b-button>
         <b-button class="mx-1" @click="onClose" type="close" variant="danger">Cerrar</b-button>
       </b-form>
@@ -102,9 +104,10 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "ModalCreate",
+  props: ['course','action'],
   data() {
     return {
       curso: {
@@ -117,18 +120,41 @@ export default {
         fecha_registro: "",
         costo: null,
         descripcion: "",
+        completado: null,
       },
       show: true,
     };
   },
+  watch: {
+    course () {
+      this.curso = this.course
+    }
+  },
+  computed:{
+    ...mapGetters(['alumnosRestantes']),
+    accion(){
+      if(this.action == 'add'){
+        return 'Agregar'
+      }else{
+        return 'Editar'
+      }
+    }
+  },
   methods: {
-    ...mapActions(["add_curso"]),
+    ...mapActions(["add_curso", "editar_curso"]),
 
     onSubmit(event) {
       event.preventDefault();
-      this.curso.id = Date.now();
-      this.add_curso(this.curso);
-      console.log(this.curso);
+      this.curso.inscritos = Number(this.curso.inscritos)
+      console.log(this.curso)
+      if(this.action === 'add'){
+        this.curso.id = Date.now();
+        this.curso.completado = false,
+        this.add_curso(this.curso);
+      }else{
+        this.editar_curso(this.curso)
+      }
+    
       this.$refs["my-modal"].hide();
     },
     onClose(){

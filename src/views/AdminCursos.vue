@@ -1,21 +1,22 @@
 <template>
   <div>
     <h1>Administración</h1>
-    <ModalCreate />
     <TablaCursos />
     <DatosInfo />
+    <!-- Modals -->
+    <!-- <ModalCreate />  -->
   </div>
 </template>
 
 <script>
 import TablaCursos from "@/components/TablaCursos.vue";
-import ModalCreate from "./ModalCreate.vue";
+// import ModalCreate from "./ModalCreate.vue";
 import DatosInfo from "@/components/DatosInfo.vue"
 export default {
   name: "VistaAdmin",
   components: {
     TablaCursos,
-    ModalCreate,
+    // ModalCreate,
     DatosInfo
   },
 };
